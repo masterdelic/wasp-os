@@ -19,7 +19,6 @@ DIGITS = (
 )
 
 MONTH = 'JanFebMarAprMayJunJulAugSepOctNovDec'
-DAY = 'ThuFriSatSunMonTueWed'
 
 class ClockApp():
     """Simple digital clock application.
@@ -97,8 +96,6 @@ class ClockApp():
         # Format the month as text
         month = now[1] - 1
         month = MONTH[month*3:(month+1)*3]
-        day = now[7] - 7
-        day = DAY[day*3:(day+1)*3]
 
         # Draw the changeable parts of the watch face
         draw.blit(DIGITS[now[4]  % 10], 4*48, 80, fg=hi)
@@ -106,7 +103,7 @@ class ClockApp():
         draw.blit(DIGITS[now[3]  % 10], 1*48, 80, fg=hi)
         draw.blit(DIGITS[now[3] // 10], 0*48, 80, fg=lo)
         draw.set_color(hi)
-        draw.string('{} {} {} {}'.format(day, now[2], month, now[0]),
+        draw.string('{} {} {}'.format(now[2], month, now[0]),
                 0, 180, width=240)
 
         # Record the minute that is currently being displayed
